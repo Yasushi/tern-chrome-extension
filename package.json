@@ -1,0 +1,12 @@
+{
+  "name": "tern-chrome-extension",
+  "version": "43.0.20150527",
+  "description": "Tern bindings to the Chrome Extension API",
+  "main": "chrome-extension.js",
+  "peerDependencies": {
+    "tern": "~0.11.0"
+  },
+  "author": "Yasushi Abe",
+  "repository": "https://github.com/Yasushi/tern-chrome-extension",
+  "license": "MIT"
+}
