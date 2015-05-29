@@ -8,7 +8,6 @@
   "use strict";
   
   tern.registerPlugin("chrome-extension", function(server, options) {
-      server._chromeApps = {};
       return { defs : defs };
   });
   
