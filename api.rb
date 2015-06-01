@@ -27,7 +27,7 @@ defs=stables.map do |name|
   pkgurl=url(name)
   pkg=Nokogiri(open(pkgurl))
   caution=pkg.css('p.caution')
-  if not caution.empty?
+  if not caution.empty? and caution.map(&:text).join.include?("This API works only on Chrome OS")
     puts caution.map(&:text)
     puts "#{name} skip"
     next
