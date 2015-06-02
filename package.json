@@ -8,5 +8,12 @@
   },
   "author": "Yasushi Abe",
   "repository": "https://github.com/Yasushi/tern-chrome-extension",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "tern": ">=0.10.0",
+    "acorn": ">=1.0.0"
+  },
+  "devDependencies": {
+    "codemirror": ">=5.3.0"
+  }
 }
