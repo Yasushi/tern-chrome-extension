@@ -1,6 +1,6 @@
 {
   "name": "tern-chrome-extension",
-  "version": "43.1.20150601",
+  "version": "46.0.20160420",
   "description": "Tern plugin for chrome extensions API.",
   "main": "chrome-extension.js",
   "peerDependencies": {
