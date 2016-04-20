@@ -1,11 +1,8 @@
 {
   "name": "tern-chrome-extension",
-  "version": "46.0.20160420",
+  "version": "46.1.20160420",
   "description": "Tern plugin for chrome extensions API.",
   "main": "chrome-extension.js",
-  "peerDependencies": {
-    "tern": "~0.18.0"
-  },
   "author": "Yasushi Abe",
   "repository": "https://github.com/Yasushi/tern-chrome-extension",
   "license": "MIT",
