@@ -1,6 +1,6 @@
 # Tern plugin for chrome extensions API.
 
-[![npm version](https://badge.fury.io/js/tern-chrome-extension.svg)](http://badge.fury.io/js/tern-chrome-extension)
+[![npm version](https://badge.fury.io/js/tern-chrome-extension.svg)](http://badge.fury.io/js/tern-chrome-extension) [![Build Status](https://travis-ci.org/Yasushi/tern-chrome-extension.svg?branch=master)](https://travis-ci.org/Yasushi/tern-chrome-extension)
 
 This plugin is [Chrome extensions API][] JSON type definition.
 
