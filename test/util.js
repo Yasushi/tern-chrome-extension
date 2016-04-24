@@ -1,7 +1,7 @@
 "use strict";
 
 var fs = require("fs"), path = require("path"), tern = require("tern"), assert = require('assert');
-require("../grunt.js");
+require("../chrome-extension.js");
 require("tern/plugin/node")
 
 var projectDir = path.resolve(__dirname, "..");
@@ -24,7 +24,10 @@ var defaultQueryOptions = {
 
 function createServer(defs, options) {
   var plugins = {'node': {}};
-  if (options) plugins['grunt'] = options; else plugins['grunt'] = {};
+  if (options)
+    plugins['chrome-extension'] = options;
+  else
+    plugins['chrome-extension'] = {};
   var server = new tern.Server({
     plugins : plugins,
     defs : defs
@@ -44,11 +47,11 @@ exports.assertCompletion = function(text, expected, name) {
   var queryOptions = defaultQueryOptions;
 
   var server = createServer(defs, {});
-  server.addFile("Gruntfile.js", text);
+  server.addFile("background.js", text);
   server.request({
     query : {
       type: "completions",
-      file: "Gruntfile.js",
+      file: "background.js",
       end: text.length,
       types: queryOptions.types,
       docs: queryOptions.docs,
@@ -77,64 +80,5 @@ exports.assertCompletion = function(text, expected, name) {
     } else {
       assert.equal(JSON.stringify(resp), JSON.stringify(expected));
     }
-  });
-}
-
-exports.assertTasks = function(text, expected, filename) {
-  var defs = [];
-  var defNames = ["ecma5"];
-  if (defNames) {
-    for (var i = 0; i < defNames.length; i++) {
-      var def = allDefs[defNames[i]];
-      defs.push(def);
-    }
-  }
-  var queryOptions = defaultQueryOptions;
-  filename = filename || "Gruntfile.js";
-
-  var server = createServer(defs, {});
-  server.addFile(filename, text);
-  server.request({
-    query : {
-      type: "grunt-tasks",
-      file: filename
-    }
-  }, function(err, resp) {
-    if (err)
-      throw err;
-    var actualMessages = resp.messages;
-    var expectedMessages = expected.messages;
-
-    assert.equal(JSON.stringify(resp), JSON.stringify(expected));
-  });
-}
-
-exports.assertTask = function(text, taskName, expected, filename) {
-  var defs = [];
-  var defNames = ["ecma5"];
-  if (defNames) {
-    for (var i = 0; i < defNames.length; i++) {
-      var def = allDefs[defNames[i]];
-      defs.push(def);
-    }
-  }
-  var queryOptions = defaultQueryOptions;
-  filename = filename || "Gruntfile.js";
-
-  var server = createServer(defs, {});
-  server.addFile(filename, text);
-  server.request({
-    query : {
-      type: "grunt-task",
-      file: filename,
-      name: taskName
-    }
-  }, function(err, resp) {
-    if (err)
-      throw err;
-    var actualMessages = resp.messages;
-    var expectedMessages = expected.messages;
-
-    assert.equal(JSON.stringify(resp), JSON.stringify(expected));
   });
 }
