@@ -1,0 +1,6 @@
+.tern-project
+.travis.yml
+api.rb
+demo/
+test.js
+test/
